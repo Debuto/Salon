@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Salon.Models;
+using HairSalon.Models;
 
-namespace Salon
+namespace HairSalon
 {
   class Program
   {
@@ -13,13 +13,13 @@ namespace Salon
 
       builder.Services.AddControllersWithViews();
 
-      builder.Services.AddDbContext<SalonContext>(
-                        dbContextOptions => dbContextOptions
-                          .UseMySql(
-                            builder.Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(builder.Configuration["ConnectionStrings:DefaultConnection"]
-                          )
-                        )
-                      );
+      builder.Services.AddDbContext<HairSalonContext>(
+        dbContextOptions => dbContextOptions
+          .UseMySql(
+            builder.Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(builder.Configuration["ConnectionStrings:DefaultConnection"]
+          )
+        )
+      );
 
       WebApplication app = builder.Build();
 
@@ -29,8 +29,8 @@ namespace Salon
       app.UseRouting();
 
       app.MapControllerRoute(
-          name: "default",
-          pattern: "{controller=Home}/{action=Index}/{id?}");
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
 
       app.Run();
     }
