@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Salon.Models;
 
 namespace Salon
 {
@@ -11,16 +13,24 @@ namespace Salon
 
       builder.Services.AddControllersWithViews();
 
+      builder.Services.AddDbContext<SalonContext>(
+                        dbContextOptions => dbContextOptions
+                          .UseMySql(
+                            builder.Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(builder.Configuration["ConnectionStrings:DefaultConnection"]
+                          )
+                        )
+                      );
+
       WebApplication app = builder.Build();
 
-      app.UseRouting();
-      app.UseStaticFiles();
       app.UseHttpsRedirection();
+      app.UseStaticFiles();
+
+      app.UseRouting();
 
       app.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}"
-      );
+          name: "default",
+          pattern: "{controller=Home}/{action=Index}/{id?}");
 
       app.Run();
     }
