@@ -1,0 +1,12 @@
+body {
+  background-color: rgb(206, 246, 147);
+  text-align: center;
+}
+h1 {
+  background-color: white;
+  color: rgb(13, 171, 13);
+  outline: auto;
+  -webkit-text-stroke: 2px black; 
+  padding: 20px 40px;
+  margin: 50px 500px 50px 500px;
+}
