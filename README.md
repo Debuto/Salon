@@ -27,6 +27,8 @@ A C# console application for.
 - VS code https://code.visualstudio.com/download
 - .NET https://dotnet.microsoft.com/en-us/download/dotnet/
 - C#
+- MySQL Workbench https://downloads.mysql.com/archives/get/p/25/file/mysql-installer-web-community-8.0.19.0.msi
+- MySQL Server https://downloads.mysql.com/archives/get/p/25/file/mysql-installer-web-community-8.0.19.0.msi
 
 <br>
 
